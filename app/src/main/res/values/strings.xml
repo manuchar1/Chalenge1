@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Chalenge1</string>
+    <string name="common_error">Error</string>
+    <string name="error">error</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="incorrect_request">Incorrect request</string>
+    <string name="an_error_occurred_please_try_again">An error occurred, please try again.</string>
+    <string name="no_internet">No Internet</string>
+</resources>
