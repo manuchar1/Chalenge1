@@ -10,7 +10,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NetworkClient {
 
-
     val newsService by lazy { createNewsService() }
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {

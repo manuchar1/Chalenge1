@@ -29,12 +29,6 @@ class NewsAdapter(
             notifyItemChanged(itemCount - 1)
         }
 
-    private val onClickListener = View.OnClickListener { v ->
-        val card = v?.tag as NewsModel
-
-    }
-
-
     override fun getItemViewType(position: Int): Int {
         return if (itemCount - 1 == position) VIEW_TYPE_LOADER else VIEW_TYPE_NEWS
     }
@@ -46,7 +40,6 @@ class NewsAdapter(
             )
             VIEW_TYPE_NEWS -> NewsViewHolder(
                 binding = ItemNewsLayoutBinding.inflate(LayoutInflater.from(parent.context)),
-                onClickListener = onClickListener
             )
             else -> throw RuntimeException("unknown ViewType")
         }
@@ -72,13 +65,7 @@ class NewsAdapter(
 
     class NewsViewHolder(
         val binding: ItemNewsLayoutBinding,
-        onClickListener: View.OnClickListener
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.setOnClickListener(onClickListener)
-        }
-    }
+    ) : RecyclerView.ViewHolder(binding.root)
 
     class LoadingViewHolder(
         val binding: LoadingItemBinding

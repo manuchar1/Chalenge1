@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.chalenge1.NetworkErrorHandler
 import com.example.chalenge1.models.NewsModel
 import com.example.chalenge1.network.NetworkClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 
 class NewsViewModel : ViewModel() {
 
@@ -26,6 +27,7 @@ class NewsViewModel : ViewModel() {
         loadMore()
         CoroutineScope(Dispatchers.IO).launch {
             getNews()
+
         }
     }
 
@@ -35,14 +37,13 @@ class NewsViewModel : ViewModel() {
     }
 
     fun onRefresh() {
-       // offset = 1
         _items.postValue(emptyList())
         loadMore()
     }
 
 
 
-    private fun getNews() {
+   private fun getNews() {
         _loadingMore.postValue(true)
         val result = NetworkClient.newsService.getRequest()
         if (result.isSuccessful) {

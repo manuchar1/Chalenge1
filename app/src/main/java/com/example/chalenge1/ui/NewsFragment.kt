@@ -20,8 +20,6 @@ class NewsFragment : Fragment() {
     private val adapter = NewsAdapter()
 
 
-   // private lateinit var viewModel: NewsViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,8 +49,6 @@ class NewsFragment : Fragment() {
                 adapter.loadingMore = it
                 if (swipeToRefresh.isRefreshing && it) swipeToRefresh.isRefreshing = false
             }
-
         }
     }
-
 }
